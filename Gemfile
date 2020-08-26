@@ -58,3 +58,5 @@ gem "simple_calendar", "~> 2.0"
 group :production do
   gem 'rails_12factor'
 end
+
+gem 'devise'
