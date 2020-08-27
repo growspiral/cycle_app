@@ -17,7 +17,7 @@
 | Column       | Type   | Options     |
 | ------       | ------ | ----------- |
 | detail       | string |             |
-| money_amount | string | null: false |
+| money_amount | integer | null: false |
 | category-id  | integer | null: false |
 | user         | references | null: false, foreign_key: true |
 
