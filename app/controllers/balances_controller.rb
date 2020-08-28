@@ -5,12 +5,15 @@ class BalancesController < ApplicationController
 
   def edit
     @balance = Balance.new
-    id = params[:id]
-    @visit_day = "#{id.slice(8, 9)}日" 
+    @id = params[:id]
+    @balances = Balance.where(day: params[:id])
+    @visit_day = "#{@id.slice(8, 9)}日" 
+    
     
   end
   def create
     @balance = Balance.new(balance_params)
+ 
     if @balance.save
       redirect_to root_path
     else
@@ -26,6 +29,6 @@ class BalancesController < ApplicationController
    private
 
   def balance_params
-    params.require(:balance).permit(:category_id, :detail, :money_amount).merge(user_id: current_user.id)
+    params.require(:balance).permit(:day, :category_id, :detail, :money_amount).merge(user_id: current_user.id)
   end
 end

@@ -1,5 +1,12 @@
 <%= @visit_day %>
+<% if @balances.present? %>
+  <% @balances.each do |balance| %>
+  <p><%= balance.id %></p>
+  <p><%= balance.category.name %></p>
+  <% end %>
+<% end %>
 <%= form_with model: @balance, local: true do |f| %>
+  <%= f.hidden_field :day, value: @id %>
   <div class="balance-detail">費目     
     <%= f.collection_select(:category_id, Category.all, :id, :name, {}) %>
   </div>
