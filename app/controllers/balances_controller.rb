@@ -15,13 +15,21 @@ class BalancesController < ApplicationController
     @balance = Balance.new(balance_params)
  
     if @balance.save
-      redirect_to root_path
+      render json:{ balance: @balance }
     else
       render :edit
     end
   end
 
-      
+  def destroy
+    
+    id = params[:id]
+    id.slice(0, 10)
+    balances = Balance.where(day: id.slice(0, 10))
+    balances[id.slice(11, 100).to_i - 1].destroy
+    redirect_to edit_balance_path(id.slice(0, 10))
+  end
+  
   def update
     @balance = Balance.create
   end
