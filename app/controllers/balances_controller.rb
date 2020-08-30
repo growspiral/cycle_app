@@ -16,6 +16,7 @@ class BalancesController < ApplicationController
  
     if @balance.save
       render json:{ balance: @balance }
+      
     else
       render :edit
     end
@@ -27,7 +28,7 @@ class BalancesController < ApplicationController
     id.slice(0, 10)
     balances = Balance.where(day: id.slice(0, 10))
     balances[id.slice(11, 100).to_i - 1].destroy
-    redirect_to edit_balance_path(id.slice(0, 10))
+    render json:{ balance: balances }
   end
   
   def update

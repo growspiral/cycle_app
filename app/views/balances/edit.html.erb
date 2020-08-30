@@ -2,28 +2,31 @@
 <div class="balance">
   <% num = 0 %>
   <% if @balances.present? %>
+  <div id="list">
+  </div>
   <% @balances.each do |balance| %>
   <ul>
     <li><%= num += 1 %>
     <li><%= balance.category.name %></li>
     <li><%= balance.detail %></li>
     <li><%= balance.money_amount %></li>
-    <li><%= link_to "削除", balance_path("#{@id}-#{num}"), method: :delete %>
+    <div id="delete-button"><%= link_to "削除", balance_path("#{@id}-#{num}"), method: :delete %></div>
   </ul>
   <% end %>
   <% end %>
 </div>
 
-<%= form_with model: @balance, method: :post, id: "form", local: true do |f| %>
+<%= form_with model: @balance, method: :post, id: "form" do |f| %>
   <%= f.hidden_field :day, value: @id %>
   <div class="balance-detail">費目     
-    <%= f.collection_select(:category_id, Category.all, :id, :name, {}) %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {id:"category_id"}) %>
+    
   </div>
   <div>詳細
-    <%= f.text_field :detail %>
+    <%= f.text_field :detail, id: "detail" %>
   </div>
   <div>金額
-    <%= f.text_field :money_amount%>
+    <%= f.text_field :money_amount, id: "money_amount" %>
   </div>
     <%= f.submit "追加", id: "submit" %>
 <% end %>
