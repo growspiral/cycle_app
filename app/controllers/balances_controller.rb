@@ -6,7 +6,7 @@ class BalancesController < ApplicationController
   def edit
     @balance = Balance.new
     @id = params[:id]
-    @balances = Balance.where(day: params[:id])
+    @balances = Balance.where(start_time: params[:id])
     @visit_day = "#{@id.slice(8, 9)}日" 
 
     
@@ -34,6 +34,6 @@ class BalancesController < ApplicationController
    private
 
   def balance_params
-    params.require(:balance).permit(:day, :category_id, :detail, :money_amount).merge(user_id: current_user.id)
+    params.require(:balance).permit(:start_time, :category_id, :detail, :money_amount).merge(user_id: current_user.id)
   end
 end

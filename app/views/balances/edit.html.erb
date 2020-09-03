@@ -23,7 +23,8 @@
 </div>
 
 <%= form_with model: @balance, method: :post, id: "form" do |f| %>
-  <%= f.hidden_field :day, value: @id %>
+  <%= f.hidden_field :start_time, value: @id %>
+
   <div class="balance-detail">費目     
     <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {id:"category_id"}) %>
     

@@ -3,6 +3,16 @@
   <%= link_to current_user.nickname, "#" %>
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 
-<%= month_calendar do |date| %>
+<%= month_calendar events: @balances do |date, balances| %>
   <%= link_to date.day, edit_balance_path(date) %>
+
+  <% amount = 0 %>
+  
+  <% if balances.present? %>
+  <% balances.each do |balance| %>
+      <% amount = amount + balance.money_amount %>
+  <% end %>
+  <%= amount %>
+  <% end %>
+  
 <% end %>
