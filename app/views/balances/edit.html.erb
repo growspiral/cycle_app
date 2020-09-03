@@ -13,13 +13,13 @@
     <div id="delete-button" data-id=<%= balance.id %>><%= link_to "削除", balance_path(balance.id), method: :delete %></div>
   </ul>
   <% end %>
+  <% end %>
   <div class="amount">
   <p>合計</p>
   <p>
   <span id="sum-money" data-amount=<%= @balances.sum(:money_amount) %>><%= @balances.sum(:money_amount) %></span>円
   </p>
   </div>
-  <% end %>
 </div>
 
 <%= form_with model: @balance, method: :post, id: "form" do |f| %>
