@@ -1,7 +1,7 @@
 <%= @visit_day %>
 <div class="balance">
   <% num = 0 %>
-  <% if @balances.present? %>
+  
   <div id="list">
   </div>
   <% @balances.each do |balance| %>
@@ -13,7 +13,7 @@
     <div id="delete-button" data-id=<%= balance.id %>><%= link_to "削除", balance_path(balance.id), method: :delete %></div>
   </ul>
   <% end %>
-  <% end %>
+ 
   <div class="amount">
   <p>合計</p>
   <p>

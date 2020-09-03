@@ -8,6 +8,7 @@ class BalancesController < ApplicationController
     @id = params[:id]
     @balances = Balance.where(day: params[:id])
     @visit_day = "#{@id.slice(8, 9)}日" 
+
     
     
   end
