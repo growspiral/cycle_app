@@ -2,3 +2,7 @@ ul{
   display: flex;
   list-style: none;
 }
+
+.amount{
+  display: flex;
+}

@@ -23,17 +23,12 @@ class BalancesController < ApplicationController
   end
 
   def destroy
-    
-    id = params[:id]
-    id.slice(0, 10)
-    balances = Balance.where(day: id.slice(0, 10))
-    balances[id.slice(11, 100).to_i - 1].destroy
-    render json:{ balance: balances }
+    balance = Balance.find(params[:id])
+    balance.destroy
+    redirect_to edit_balance_path(balance.day)
   end
   
-  def update
-    @balance = Balance.create
-  end
+  
 
    private
 

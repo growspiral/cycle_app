@@ -10,9 +10,15 @@
     <li><%= balance.category.name %></li>
     <li><%= balance.detail %></li>
     <li><%= balance.money_amount %></li>
-    <div id="delete-button"><%= link_to "削除", balance_path("#{@id}-#{num}"), method: :delete %></div>
+    <div id="delete-button" data-id=<%= balance.id %>><%= link_to "削除", balance_path(balance.id), method: :delete %></div>
   </ul>
   <% end %>
+  <div class="amount">
+  <p>合計</p>
+  <p>
+  <span id="sum-money" data-amount=<%= @balances.sum(:money_amount) %>><%= @balances.sum(:money_amount) %></span>円
+  </p>
+  </div>
   <% end %>
 </div>
 
@@ -30,5 +36,7 @@
   </div>
     <%= f.submit "追加", id: "submit" %>
 <% end %>
+
+<%= link_to "マイページに戻る", mypage_path(current_user.id) %>
 
     
