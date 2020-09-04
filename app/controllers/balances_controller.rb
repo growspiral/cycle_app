@@ -1,4 +1,5 @@
 class BalancesController < ApplicationController
+  before_action :move_to_sign_in, except: :index
   def index
     @balances = Balance.all
   end
@@ -35,5 +36,9 @@ class BalancesController < ApplicationController
 
   def balance_params
     params.require(:balance).permit(:start_time, :category_id, :detail, :money_amount).merge(user_id: current_user.id)
+  end
+
+  def move_to_sign_in
+    redirect_to user_session_path unless user_signed_in?
   end
 end

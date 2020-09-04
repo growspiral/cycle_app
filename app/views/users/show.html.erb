@@ -2,7 +2,7 @@
 
   <%= link_to current_user.nickname, "#" %>
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-
+<h1>合計<%= @balances.sum(:money_amount) %>円</h1>
 <%= month_calendar events: @balances do |date, balances| %>
   <%= link_to date.day, edit_balance_path(date) %>
 
