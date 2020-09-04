@@ -19,14 +19,14 @@ class BalancesController < ApplicationController
       render json:{ balance: @balance }
       
     else
-      render :edit
+      redirect_to edit_balance_path(@balance.start_time), notice: '必須項目を入力してください'
     end
   end
 
   def destroy
     balance = Balance.find(params[:id])
     balance.destroy
-    redirect_to edit_balance_path(balance.day)
+    redirect_to edit_balance_path(balance.start_time)
   end
   
   
