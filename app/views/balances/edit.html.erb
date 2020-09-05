@@ -1,44 +1,55 @@
-<%= flash[:notice] %>
-<%= @visit_day %>
-<div class="balance">
-  <% num = 0 %>
+<%= render 'shared/headder' %>
+<div class="edit-content">
+  <div class="visit-day">
+  <%= @visit_day %>
+  </div>
   
-  <div id="list">
-  </div>
-  <% @balances.each do |balance| %>
-  <ul>
-    <li><%= num += 1 %>
-    <li><%= balance.category.name %></li>
-    <li><%= balance.detail %></li>
-    <li><%= balance.money_amount %></li>
-    <div id="delete-button" data-id=<%= balance.id %>><%= link_to "削除", balance_path(balance.id), method: :delete %></div>
-  </ul>
-  <% end %>
- 
-  <div class="amount">
-  <p>合計</p>
-  <p>
-  <span id="sum-money" data-amount=<%= @balances.sum(:money_amount) %>><%= @balances.sum(:money_amount) %></span>円
-  </p>
-  </div>
-</div>
-
-<%= form_with model: @balance, method: :post, id: "form" do |f| %>
-  <%= f.hidden_field :start_time, value: @id %>
-
-  <div class="balance-detail">費目     
-    <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {id:"category_id"}) %>
+    <div class="balance">
+      <ul class="list-name">
+        <li>日付</li>
+        <li>費目</li>
+        <li>詳細</li>
+        <li>収支</li>
+      </ul>
+      <div id="list">
+      </div>
+      <% num = 0 %>
+      <% @balances.each do |balance| %>
+      <ul>
+        <li><%= num += 1 %>
+        <li><%= balance.category.name %></li>
+        <li><%= balance.detail %></li>
+        <li><%= balance.money_amount %></li>
+        <li id="delete-button" data-id=<%= balance.id %>><%= link_to "削除", balance_path(balance.id), class: "delete", method: :delete %></li>
+      </ul>
+      <% end %>
     
-  </div>
-  <div>詳細
-    <%= f.text_field :detail, id: "detail" %>
-  </div>
-  <div>金額
-    <%= f.text_field :money_amount, id: "money_amount" %>
-  </div>
-    <%= f.submit "追加", id: "submit" %>
-<% end %>
+      <div class="amount">
+      <p>合計</p>
+      <p>
+      <span id="sum-money" data-amount=<%= @balances.sum(:money_amount) %>><%= @balances.sum(:money_amount) %></span>円
+      </p>
+      </div>
+    </div>
 
-<%= link_to "マイページに戻る", mypage_path(current_user.id) %>
+    <%= form_with model: @balance, method: :post, id: "form" do |f| %>
+      <%= f.hidden_field :start_time, value: @id %>
+
+      <div class="balance-detail">費目     
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {id:"category_id"}) %>
+        
+      </div>
+      <div>詳細
+        <%= f.text_field :detail, id: "detail" %>
+      </div>
+      <div>金額
+        <%= f.text_field :money_amount, id: "money_amount" %>
+      </div>
+        <%= f.submit "追加", id: "submit" %>
+    <% end %>
+
+  <%= link_to "マイページに戻る", mypage_path(current_user.id) %>
+
+</div>
 
     

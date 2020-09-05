@@ -1,8 +1,27 @@
+.edit-content {
+  padding: 0 80px 0 80px;
+}
+.list-name {
+  justify-content: center;
+}
+.list-name li {
+  
+}
 ul{
   display: flex;
+  
   list-style: none;
 }
 
 .amount{
   display: flex;
+}
+
+.visit-day {
+  font-size: 27px;
+}
+
+.delete {
+  display: block;
+  text-decoration: none;
 }
