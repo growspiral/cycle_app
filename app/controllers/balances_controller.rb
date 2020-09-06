@@ -7,8 +7,10 @@ class BalancesController < ApplicationController
   def edit
     @balance = Balance.new
     @id = params[:id]
-    @balances = Balance.where(start_time: params[:id])
     @visit_day = "#{@id.slice(8, 9)}日" 
+    @balances = Balance.where(start_time: params[:id])
+    @balances_income = Balance.where(start_time: params[:id], balance: "収入").sum(:money_amount)
+    @balances_spending = Balance.where(start_time: params[:id], balance: "支出").sum(:money_amount)
 
     
     
@@ -27,9 +29,9 @@ class BalancesController < ApplicationController
   def destroy
     balance = Balance.find(params[:id])
     balance.destroy
-    start_time = balance.start_time.slice(0, 10)
+    
 
-    redirect_to edit_balance_path(start_time)
+    redirect_to edit_balance_path(balance.start_time)
   end
   
   
@@ -37,7 +39,7 @@ class BalancesController < ApplicationController
    private
 
   def balance_params
-    params.require(:balance).permit(:start_time, :category_id, :detail, :money_amount).merge(user_id: current_user.id)
+    params.require(:balance).permit(:start_time, :balance, :category_id, :detail, :money_amount).merge(user_id: current_user.id)
   end
 
   def move_to_sign_in

@@ -15,8 +15,9 @@ ActiveRecord::Schema.define(version: 2020_08_26_085942) do
   create_table "balances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "detail"
     t.integer "money_amount", null: false
-    t.datetime "start_time", null: false
+    t.date "start_time", null: false
     t.integer "category_id", null: false
+    t.string "balance", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

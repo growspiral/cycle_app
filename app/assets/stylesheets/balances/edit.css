@@ -3,34 +3,36 @@
 }
 .list-name {
   display: flex;
-  justify-content: center;
+  
   list-style: none;
-  
-}
-.list-name li {
-  padding: 0 30px 0 30px;
-  
+  width :100%;
 }
 .list-num {
   border: 1px solid;
+  padding: 0 10px 0 10px;
+}
+.in-or-out {
+  border: 1px solid;
+  padding: 0 15px 0 15px;
 }
 .list-category {
   border: 1px solid;
+  padding: 0 25px 0 25px;
 }
 .list-detail {
-  padding: 0 120px 0 120px;
+  padding: 0 190px 0 190px;
   border: 1px solid;
 }
 .list-balance {
   border: 1px solid;
-  padding: 0 10px 0 10px;
+  padding: 0 30px 0 30px;
 }
 .list-content {
-  margin-left: 50px;
-  
+  margin-left: 15px;
+  position: relative;
   display: flex;
   list-style: none;
-  position: relative;
+  
 }
 .list-content li {
   justify-content: center;
@@ -39,16 +41,19 @@
   
   padding-right: 20px;
 }
+.lists-balance {
+ margin-left: 15px;
+}
 .lists-category {
-  padding-right: 40px;
-  margin-left: 40px;
+  padding-right: 35px;
+  margin-left: 30px;
 }
 .lists-detail {
   margin-right:200px;
 }
-.lists-balance {
+.lists-money {
   position: absolute;
-  right: 290px;
+   right: 220px;
 }
 .amount{
   display: flex;
@@ -67,7 +72,7 @@
   display: block;
   text-decoration: none;
   position: absolute;
-  right: 210px;
+  right: 150px;
 }
 
 .form-content span {

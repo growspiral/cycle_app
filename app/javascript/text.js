@@ -22,7 +22,7 @@ if (document.URL.match( /edit/ )) {
           return null;
         }
         
-        
+        console.log(XHR.response)
         const item = XHR.response.balance;
         console.log(item.money_amount)
         let name = ""
@@ -43,10 +43,13 @@ if (document.URL.match( /edit/ )) {
         }
         const listElements = document.createElement('div')
         listElements.setAttribute('id', "list-element")
-        listElements.setAttribute('data-id', item.money_amount)
+        if (item.balance == "収入"){
+          listElements.setAttribute('data-id', item.money_amount)
+        }else {
+          listElements.setAttribute('data-id', -(item.money_amount))
+        }
         list.appendChild(listElements)
         const listAll = document.querySelectorAll("#list-element")
-        
         
         
         const formCategory = document.getElementById("category_id")
@@ -56,6 +59,7 @@ if (document.URL.match( /edit/ )) {
         
         <ul>
         <li>${listAll.length}</li>
+        <li>${item.balance}</li>
         <li>${name}</li>
         <li>${item.detail}</li>
         <li>${item.money_amount}</li>

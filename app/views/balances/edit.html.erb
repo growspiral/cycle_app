@@ -9,6 +9,9 @@
         <div class="list-num">
           <li>No</li>
         </div>
+        <div class="in-or-out">
+          <li>収支</li>
+        </div>
         <div class="list-category">
           <li>費目</li>
         </div>
@@ -16,7 +19,7 @@
           <li>詳細</li>
         </div>
         <div class="list-balance">
-          <li>収支</li>
+          <li>金額</li>
         </div>
       </ul>
       <div id="list">
@@ -27,29 +30,50 @@
         <div class="lists-num">
           <li><%= num += 1 %>
         </div>
+        <div class="lists-balance">
+          <li><%= balance.balance %>
+        </div>
         <div class="lists-category">
           <li><%= balance.category.name %></li>
         </div>
         <div class="lists-detail">
           <li><%= balance.detail %></li>
         </div>
-        <div class="lists-balance">
+        <% if balance.balance == "収入" %>
+        <div class="lists-money">
           <li><%= balance.money_amount %></li>
         </div>
+        <% else %>
+          <div class="lists-money">
+          <li><%= -(balance.money_amount) %></li>
+        </div>
+        <% end %>
           <li id="delete-button" data-id=<%= balance.id %>><%= link_to "削除", balance_path(balance.id), class: "delete", method: :delete %></li>
       </ul>
       <% end %>
-    
+      <p>収入計</p>
+      <p>
+      <span><%= @balances_income %></span>円
+      </p>
+      <p>支出計</p>
+      <p>
+      <span><%= @balances_spending %></span>円
+      </p>
       <div class="amount">
       <p>合計</p>
       <p>
-      <span id="sum-money" data-amount=<%= @balances.sum(:money_amount) %>><%= @balances.sum(:money_amount) %></span>円
+      <span id="sum-money" data-amount=<%= @balances_income - @balances_spending %>><%= @balances_income - @balances_spending %></span>円
       </p>
       </div>
     </div>
 
     <%= form_with model: @balance, method: :post, id: "form" do |f| %>
       <%= f.hidden_field :start_time, value: @id %>
+      <p>収支<span>(※必須)</span>
+      <%= f.radio_button :balance, :収入, id: "income" %>
+      <%= f.label :収入 %>
+      <%= f.radio_button :balance, :支出, id: "spending" %>
+      <%= f.label :支出 %>
       <div class="form-content"> 
         <p>費目<span>(※必須)</span>     
           <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {id:"category_id"}) %>
