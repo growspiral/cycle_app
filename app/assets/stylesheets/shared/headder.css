@@ -10,7 +10,9 @@
 
 }
 .user-status {
+ display: flex;
  float: right;
+ list-style: none;
 
 }
 .user-nickname {

@@ -1,20 +1,62 @@
 .edit-content {
-  padding: 0 80px 0 80px;
+  padding: 0 200px 0 200px;
 }
 .list-name {
+  display: flex;
   justify-content: center;
+  list-style: none;
+  
 }
 .list-name li {
+  padding: 0 30px 0 30px;
   
 }
-ul{
+.list-num {
+  border: 1px solid;
+}
+.list-category {
+  border: 1px solid;
+}
+.list-detail {
+  padding: 0 120px 0 120px;
+  border: 1px solid;
+}
+.list-balance {
+  border: 1px solid;
+  padding: 0 10px 0 10px;
+}
+.list-content {
+  margin-left: 50px;
+  
   display: flex;
-  
   list-style: none;
+  position: relative;
 }
-
+.list-content li {
+  justify-content: center;
+}
+.lists-num {
+  
+  padding-right: 20px;
+}
+.lists-category {
+  padding-right: 40px;
+  margin-left: 40px;
+}
+.lists-detail {
+  margin-right:200px;
+}
+.lists-balance {
+  position: absolute;
+  right: 290px;
+}
 .amount{
   display: flex;
+  float: right;
+}
+.amount p {
+  
+  font-size: 27px;
 }
 
 .visit-day {
@@ -24,4 +66,10 @@ ul{
 .delete {
   display: block;
   text-decoration: none;
+  position: absolute;
+  right: 210px;
+}
+
+.form-content span {
+  color: red;
 }

@@ -6,21 +6,37 @@
   
     <div class="balance">
       <ul class="list-name">
-        <li>日付</li>
-        <li>費目</li>
-        <li>詳細</li>
-        <li>収支</li>
+        <div class="list-num">
+          <li>No</li>
+        </div>
+        <div class="list-category">
+          <li>費目</li>
+        </div>
+        <div class="list-detail">
+          <li>詳細</li>
+        </div>
+        <div class="list-balance">
+          <li>収支</li>
+        </div>
       </ul>
       <div id="list">
       </div>
       <% num = 0 %>
       <% @balances.each do |balance| %>
-      <ul>
-        <li><%= num += 1 %>
-        <li><%= balance.category.name %></li>
-        <li><%= balance.detail %></li>
-        <li><%= balance.money_amount %></li>
-        <li id="delete-button" data-id=<%= balance.id %>><%= link_to "削除", balance_path(balance.id), class: "delete", method: :delete %></li>
+      <ul class="list-content">
+        <div class="lists-num">
+          <li><%= num += 1 %>
+        </div>
+        <div class="lists-category">
+          <li><%= balance.category.name %></li>
+        </div>
+        <div class="lists-detail">
+          <li><%= balance.detail %></li>
+        </div>
+        <div class="lists-balance">
+          <li><%= balance.money_amount %></li>
+        </div>
+          <li id="delete-button" data-id=<%= balance.id %>><%= link_to "削除", balance_path(balance.id), class: "delete", method: :delete %></li>
       </ul>
       <% end %>
     
@@ -34,18 +50,19 @@
 
     <%= form_with model: @balance, method: :post, id: "form" do |f| %>
       <%= f.hidden_field :start_time, value: @id %>
-
-      <div class="balance-detail">費目     
-        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {id:"category_id"}) %>
+      <div class="form-content"> 
+        <p>費目<span>(※必須)</span>     
+          <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {id:"category_id"}) %>
+        </p>
         
+        <p>詳細<span>(※20字)</span>
+          <%= f.text_field :detail, id: "detail" %>
+      </p>
+        <p>金額<span>(※必須)</span>
+          <%= f.text_field :money_amount, id: "money_amount" %>
+        </p>
+          <%= f.submit "追加", id: "submit" %>
       </div>
-      <div>詳細
-        <%= f.text_field :detail, id: "detail" %>
-      </div>
-      <div>金額
-        <%= f.text_field :money_amount, id: "money_amount" %>
-      </div>
-        <%= f.submit "追加", id: "submit" %>
     <% end %>
 
   <%= link_to "マイページに戻る", mypage_path(current_user.id) %>

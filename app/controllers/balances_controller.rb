@@ -27,7 +27,9 @@ class BalancesController < ApplicationController
   def destroy
     balance = Balance.find(params[:id])
     balance.destroy
-    redirect_to edit_balance_path(balance.start_time)
+    start_time = balance.start_time.slice(0, 10)
+
+    redirect_to edit_balance_path(start_time)
   end
   
   
