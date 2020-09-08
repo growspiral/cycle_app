@@ -7,6 +7,7 @@ if (document.URL.match( /edit/ )) {
   const list = document.getElementById("list")
   submit.addEventListener("click", (e) => {
     const formData = new FormData(document.getElementById("form"));
+    console.log(formData)
     const XHR = new XMLHttpRequest();
     XHR.open("POST", "/balances", true);
     XHR.responseType = "json";

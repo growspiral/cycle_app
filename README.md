@@ -6,6 +6,12 @@
 
 - 家計簿のアプリケーションです。ユーザーの管理機能があり、個々のユーザーが自身の家計簿を作成することができます。編集機能でその日のお金の出入りを追加することで、日毎、月毎の合計金額を見ることができます。
 
+# URL
+
+https://cycle-app-28433.herokuapp.com/
+
+# テスト用アカウント
+
 
 
 # テーブル設計
@@ -24,12 +30,12 @@
 
 ## balances テーブル
 
-| Column       | Type   | Options     |
-| ------       | ------ | ----------- |
-| detail       | string |             |
-| money_amount | integer | null: false |
-| category-id  | integer | null: false |
-| user         | references | null: false, foreign_key: true |
+| Column        | Type   | Options     |
+| ----------    | ------ | ----------- |
+| detail        | string |             |
+| money_amount  | integer | null: false |
+| category_id   | integer | null: false |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 
