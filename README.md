@@ -29,13 +29,13 @@ https://cycle-app-28433.herokuapp.com/
 - has_many :balances
 
 ## balances テーブル
+| Column        | Type      | Options     |
+| --------      | ------    | ----------- |
+| detail        | string    |              |
+| money_amount  | integer   | null: false |
+| category_id   | integer   | null: false |
+| user          | references   | null: false, foreign_key: true |
 
-| Column        | Type   | Options     |
-| ----------    | ------ | ----------- |
-| detail        | string |             |
-| money_amount  | integer | null: false |
-| category_id   | integer | null: false |
-| user          | references | null: false, foreign_key: true |
 
 ### Association
 
