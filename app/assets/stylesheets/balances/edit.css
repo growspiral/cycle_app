@@ -1,15 +1,17 @@
 .edit-content {
   padding: 0 200px 0 200px;
+  
 }
 .list-name {
   display: flex;
   
   list-style: none;
-  width :100%;
+  
 }
 .list-num {
   border: 1px solid;
   padding: 0 10px 0 10px;
+  
 }
 .in-or-out {
   border: 1px solid;
@@ -20,7 +22,7 @@
   padding: 0 25px 0 25px;
 }
 .list-detail {
-  padding: 0 190px 0 190px;
+  padding: 0 180px 0 180px;
   border: 1px solid;
 }
 .list-balance {
@@ -39,30 +41,40 @@
 }
 .lists-num {
   
-  padding-right: 20px;
+  
+  width: 35px;
 }
 .lists-balance {
- margin-left: 15px;
+ width: 60px;
 }
 .lists-category {
-  padding-right: 35px;
-  margin-left: 30px;
+  width: 50px;
 }
 .lists-detail {
   margin-right:200px;
+
+  width: px;
 }
 .lists-money {
   position: absolute;
    right: 220px;
 }
-.amount{
-  display: flex;
-  float: right;
+
+.day-amount {
+  float:right;
+}
+.income p {
+  font-size: 23px;
+}
+.spending p {
+  font-size: 23px;
+.amount 
 }
 .amount p {
   
-  font-size: 27px;
+  font-size: 30px;
 }
+
 
 .visit-day {
   font-size: 27px;
@@ -77,4 +89,7 @@
 
 .form-content span {
   color: red;
+}
+.form {
+  display: block;
 }

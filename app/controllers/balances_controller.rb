@@ -2,15 +2,17 @@ class BalancesController < ApplicationController
   before_action :move_to_sign_in, except: :index
   def index
     @balances = Balance.all
+    
   end
 
   def edit
     @balance = Balance.new
     @id = params[:id]
+    @this_month = @id.slice(0, 7)
     @visit_day = "#{@id.slice(8, 9)}日" 
-    @balances = Balance.where(start_time: params[:id])
-    @balances_income = Balance.where(start_time: params[:id], balance: "収入").sum(:money_amount)
-    @balances_spending = Balance.where(start_time: params[:id], balance: "支出").sum(:money_amount)
+    @balances = Balance.where(start_time: params[:id], user_id: current_user.id)
+    @balances_income = Balance.where(start_time: params[:id], balance: "収入", user_id: current_user.id).sum(:money_amount)
+    @balances_spending = Balance.where(start_time: params[:id], balance: "支出", user_id: current_user.id).sum(:money_amount)
 
     
     
@@ -39,7 +41,7 @@ class BalancesController < ApplicationController
    private
 
   def balance_params
-    params.require(:balance).permit(:start_time, :balance, :category_id, :detail, :money_amount).merge(user_id: current_user.id)
+    params.require(:balance).permit(:year_month, :start_time, :balance, :category_id, :detail, :money_amount).merge(user_id: current_user.id)
   end
 
   def move_to_sign_in

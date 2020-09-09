@@ -1,15 +1,16 @@
 <%= render 'shared/headder' %>
 
 <div class="all-money">
-<h1>総資産:<%= @balances.sum(:money_amount) %>円</h1>
+<h1>総資産:<%= @balances_income - @balances_spending %>円</h1>
 </div>
 <%= month_calendar events: @balances do |date, balances| %>
   <%= link_to date.day, edit_balance_path(date) %>
-
+  
   <% income = 0 %>
   <% spending = 0 %>
   <% if balances.present? %>
   <% balances.each do |balance| %>
+ 
     <% if balance.balance == "収入" %>
       <% income = income + balance.money_amount %>
     <% else %>
@@ -19,4 +20,6 @@
   <%= income - spending %>
   <% end %>
   
+  
 <% end %>
+<%= @id %>

@@ -13,6 +13,7 @@ if (document.URL.match( /edit/ )) {
     XHR.responseType = "json";
     XHR.send(formData);
     XHR.onload = () => {
+      console.log(formData)
       if (XHR.response == null) {
         alert(`必須項目を入力してください`);
       } else {
@@ -56,16 +57,30 @@ if (document.URL.match( /edit/ )) {
         const formCategory = document.getElementById("category_id")
         const formDetail = document.getElementById("detail")
         const formMoneyAmount = document.getElementById("money_amount")
-        const HTML = `
-        
-        <ul>
-        <li>${listAll.length}</li>
-        <li>${item.balance}</li>
-        <li>${name}</li>
-        <li>${item.detail}</li>
-        <li>${item.money_amount}</li>
-        <li>
-        </ul>`;
+        if (item.balance == "収入"){
+          let HTML = `
+          
+          <ul class="list-content">
+          <li class="lists-num">${listAll.length}</li>
+          <li class="lists-balance">${item.balance}</li>
+          <li class="lists-category">${name}</li>
+          <li class="lists-detail">${item.detail}</li>
+          <li class="lists-money">${item.money_amount}</li>
+          
+          </ul>`;
+        }else {
+           HTML = `
+          
+          <ul class="list-content">
+          <li class="lists-num">${listAll.length}</li>
+          <li class="lists-balance">${item.balance}</li>
+          <li class="lists-category">${name}</li>
+          <li class="lists-detail">${item.detail}</li>
+          <li class="lists-money">${-(item.money_amount)}</li>
+          
+          </ul>`;
+
+        }
         listElements.insertAdjacentHTML("afterend", HTML);
         formCategory.value = ""
         formDetail.value = ""

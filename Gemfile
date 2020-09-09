@@ -66,3 +66,5 @@ gem 'pry-rails'
 gem 'active_hash'
 
 gem 'gon'
+
+gem 'rails-i18n'
