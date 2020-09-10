@@ -51,7 +51,7 @@ password: m3sqsknm
 | 家計簿削除機能   | 間違ったり不要になった項目を削除できる                               | 2日      |
 | フロント実装     | 使いやすいレイアウト                                                 | 1日      
 
-![demo](/Users/tatsuya/Downloads/sampleのコピー.gif)
+![demo](http://Users/tatsuya/Downloads/sampleのコピー.gif)
 
 # テーブル設計
 
